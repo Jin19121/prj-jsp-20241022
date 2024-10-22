@@ -43,10 +43,32 @@ public class BoardController {
     public void listBoard(@RequestParam(name = "page", defaultValue = "1") Integer page,
                           Model model) {
         //한 페이지에 10개 게시물 표시
-
         List<Board> list = service.list(page);
         model.addAttribute("boardList", list);
 //        model.addAttribute("boardList", service.list());
+
+        //현재 페이지
+        model.addAttribute("currentPage", page);
+
+        //페이지 번호의 오른쪽 끝 값
+        Integer endRight = ((page - 1) / 10 + 1) * 10;
+        model.addAttribute("endRight", endRight);
+
+        //페이지 왼쪽
+        Integer endLeft = endRight - 9;
+        model.addAttribute("endLeft", endLeft);
+
+        //다음
+        Integer nextPage = endRight + 1;
+        model.addAttribute("next", nextPage);
+
+        //이전
+        Integer prevPage = endLeft - 1;
+        model.addAttribute("prev", prevPage);
+
+        //마지막 페이지 연산
+        Integer lastPage = service.count();
+        model.addAttribute("lastPage", lastPage);
     }
 
     //각 게시글

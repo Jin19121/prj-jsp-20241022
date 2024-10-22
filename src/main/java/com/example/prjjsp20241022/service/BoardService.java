@@ -26,6 +26,15 @@ public class BoardService {
         return list;
     }
 
+    public Integer count() {
+        //총 레코드 수 count
+        Integer count = mapper.count();
+        //마지막 페이지 수
+        Integer lastPage = (count - 1) / 10 + 1;
+
+        return lastPage;
+    }
+
     public Board get(Integer id) {
         return mapper.selectById(id);
     }
@@ -38,3 +47,4 @@ public class BoardService {
         mapper.update(board);
     }
 }
+

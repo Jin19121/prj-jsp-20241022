@@ -9,7 +9,7 @@
     <title>edit</title>
 </head>
 <body>
-<c:import url="/WEB-INF/view/fragment/navbar.jsp"></c:import>
+<c:import url="/WEB-INF/view/fragment/navbar.jsp"/>
 
 <h2>${board.id}번 게시물 수정</h2>
 <form method="post">
@@ -33,5 +33,6 @@
         <button>수정</button>
     </div>
 </form>
+<c:import url="/WEB-INF/view/fragment/pageList.jsp"/>
 </body>
 </html>
