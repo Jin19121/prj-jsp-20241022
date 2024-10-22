@@ -31,11 +31,18 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
+    //게시글 list
     @GetMapping("list")
     public void listBoard(Model model) {
         List<Board> list = service.list();
         model.addAttribute("boardList", list);
 //        model.addAttribute("boardList", service.list());
+    }
 
+    //각 게시글
+    @GetMapping("view")
+    public void viewBoard(Integer id, Model model) {
+        Board board = service.get(id);
+        model.addAttribute("board", board);
     }
 }
