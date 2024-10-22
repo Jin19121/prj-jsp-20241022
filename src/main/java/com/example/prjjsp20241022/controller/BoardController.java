@@ -32,7 +32,7 @@ public class BoardController {
 
         rttr.addFlashAttribute("message", Map.of("type", "success", "text", "새 게시물 등록 완료"));
         rttr.addFlashAttribute("id", board.getId());
-        return "redirect:/board/view";
+        return "redirect:/board/view?id=" + board.getId();
     }
 
     //게시글 list
@@ -71,6 +71,6 @@ public class BoardController {
         service.update(board);
 
         rttr.addFlashAttribute("id", board.getId());
-        return "redirect:/board/view";
+        return "redirect:/board/view?id=" + board.getId();
     }
 }
