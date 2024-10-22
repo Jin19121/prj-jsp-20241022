@@ -5,6 +5,7 @@
     <title>list</title>
 </head>
 <body>
+<c:import url="/WEB-INF/view/fragment/navbar.jsp"></c:import>
 <h2>게시글 목록</h2>
 <table>
     <thead>
