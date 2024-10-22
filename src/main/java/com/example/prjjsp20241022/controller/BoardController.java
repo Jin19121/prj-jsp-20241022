@@ -69,6 +69,10 @@ public class BoardController {
         //마지막 페이지 연산
         Integer lastPage = service.count();
         model.addAttribute("lastPage", lastPage);
+
+        //마지막 페이지에서 끊기
+        Integer cutEnd = ((page - 1) / 10 - 1) * 10;
+        model.addAttribute("cutEnd", Math.min(cutEnd, lastPage));
     }
 
     //각 게시글

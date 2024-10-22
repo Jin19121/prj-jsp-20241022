@@ -40,7 +40,7 @@
 <div style="margin: 10px">
     <%--이전--%>
     <c:if test="${currentPage!=1}">
-        <c:url value="/main/board/list" var="pageLink">
+        <c:url value="/board/list" var="pageLink">
             <c:param name="page" value="${prev}"/>
         </c:url>
         <a href="${pageLink}">&lt; 이전</a>
@@ -56,7 +56,7 @@
     </c:forEach>
     <%--다음--%>
     <c:if test="${currentPage<lastPage}">
-        <c:url value="/main/board/list" var="pageLink">
+        <c:url value="/board/list" var="pageLink">
             <c:param name="page" value="${next}"/>
         </c:url>
         <a href="${pageLink}">다음 &gt;</a>
