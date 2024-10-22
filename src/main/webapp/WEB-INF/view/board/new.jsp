@@ -5,6 +5,8 @@
     <title>new board</title>
 </head>
 <body>
+<c:import url="/WEB-INF/view/fragment/navbar.jsp"></c:import>
+
 <h2>새 게시물 작성</h2>
 <form method="post">
     <div>제목
