@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
-    <title>view</title>
+    <title>view ${board.id}</title>
 </head>
 <body>
 <c:import url="/WEB-INF/view/fragment/navbar.jsp"></c:import>
@@ -27,5 +27,6 @@
         <button>삭제</button>
     </form>
 </div>
+<a href="/board/edit?id=${board.id}">수정</a>
 </body>
 </html>
