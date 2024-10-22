@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -25,10 +26,11 @@ public class BoardController {
     }
 
     @PostMapping("new")
-    public String newBoard(Board board) {
+    public String newBoard(Board board, RedirectAttributes rttr) {
         service.add(board);
 
-        return "redirect:/board/list";
+        rttr.addFlashAttribute("id", board.getId());
+        return "redirect:/board/view";
     }
 
     //게시글 list
@@ -63,8 +65,10 @@ public class BoardController {
     }
 
     @PostMapping("edit")
-    public String editBoard(Board board) {
+    public String editBoard(Board board, RedirectAttributes rttr) {
         service.update(board);
-        return "redirect:/board/list";
+
+        rttr.addFlashAttribute("id", board.getId());
+        return "redirect:/board/view";
     }
 }
