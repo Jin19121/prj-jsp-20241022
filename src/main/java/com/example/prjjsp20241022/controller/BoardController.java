@@ -30,9 +30,11 @@ public class BoardController {
     public String newBoard(Board board, RedirectAttributes rttr) {
         service.add(board);
 
-        rttr.addFlashAttribute("message", Map.of("type", "success", "text", "새 게시물 등록 완료"));
-        rttr.addFlashAttribute("id", board.getId());
-        return "redirect:/board/view?id=" + board.getId();
+        rttr.addFlashAttribute("message",
+                Map.of("type", "success",
+                        "text", "새 게시물 등록 완료"));
+        rttr.addAttribute("id", board.getId());
+        return "redirect:/board/view";
     }
 
     //게시글 list
@@ -52,8 +54,12 @@ public class BoardController {
 
     //삭제
     @PostMapping("delete")
-    public String deleteBoard(Integer id) {
+    public String deleteBoard(Integer id, RedirectAttributes rttr) {
         service.remove(id);
+
+        rttr.addFlashAttribute("message",
+                Map.of("type", "warning",
+                        "text", id + "번 게시물 삭제 완료"));
         return "redirect:/board/list";
     }
 
@@ -61,16 +67,17 @@ public class BoardController {
     @GetMapping("edit")
     public void editBoard(Integer id, Model model) {
         Board board = service.get(id);
-        if (board != null) {
-            model.addAttribute("board", board);
-        }
+        model.addAttribute("board", board);
     }
 
     @PostMapping("edit")
     public String editBoard(Board board, RedirectAttributes rttr) {
         service.update(board);
 
-        rttr.addFlashAttribute("id", board.getId());
-        return "redirect:/board/view?id=" + board.getId();
+        rttr.addFlashAttribute("message",
+                Map.of("type", "edited",
+                        "text", board.getId() + "번 게시물 수정 완료"));
+        rttr.addAttribute("id", board.getId());
+        return "redirect:/board/view";
     }
 }

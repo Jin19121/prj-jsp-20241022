@@ -11,3 +11,8 @@ CREATE TABLE board
 
 SELECT *
 FROM board;
+
+INSERT INTO board
+    (title, content, writer)
+SELECT title, content, writer
+FROM board;
