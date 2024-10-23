@@ -27,28 +27,12 @@
     </nav>
     <div>
         <c:if test="${not empty message}">
-            <style>
-                h5 {
-                    padding: 10px;
-                }
-
-                .success {
-                    background-color: skyblue;
-                }
-
-                .warning {
-                    background-color: darkorange;
-                }
-
-                .edited {
-                    background-color: lightyellow;
-                }
-            </style>
             <div class="${message.type}">
-                <h5>
-                        ${message.text}
-                </h5>
+                <h5>${message.text}</h5>
             </div>
         </c:if>
+    </div>
+    <div class="alert alert-primary" role="alert">
+        A simple primary alert—check it out!
     </div>
 </div>

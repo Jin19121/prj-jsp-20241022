@@ -32,7 +32,7 @@ public class BoardController {
         service.add(board);
 
         rttr.addFlashAttribute("message",
-                Map.of("type", "success",
+                Map.of("type", "written",
                         "text", "새 게시물 등록 완료"));
         rttr.addAttribute("id", board.getId());
         return "redirect:/board/view";
