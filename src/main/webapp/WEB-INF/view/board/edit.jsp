@@ -9,7 +9,7 @@
     <title>edit</title>
 </head>
 <body>
-<c:import url="/WEB-INF/view/fragment/navbar.jsp"/>
+<c:import url="/WEB-INF/view/fragment/bsbar.jsp"/>
 
 <h2>${board.id}번 게시물 수정</h2>
 <form method="post">

@@ -5,7 +5,7 @@
     <title>view ${board.id}</title>
 </head>
 <body>
-<c:import url="/WEB-INF/view/fragment/navbar.jsp"></c:import>
+<c:import url="/WEB-INF/view/fragment/bsbar.jsp"></c:import>
 
 <h2> ${board.id}번 게시글 보기</h2>
 <div> 제목
