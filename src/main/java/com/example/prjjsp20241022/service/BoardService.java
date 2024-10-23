@@ -31,9 +31,33 @@ public class BoardService {
 
         //페이지 관련 정보들
         Integer countAll = mapper.countAll();
-        Integer lastPageNumber = (countAll - 1) / 10 + 1;
+        Integer lastPageNumber = (countAll - 1) / 10 + 1; //마지막 페이지
+        Integer rightPageNumber = ((page - 1) / 10 + 1) * 10; //현재 페이지 기준 오른쪽 끝 페이지 번호
+        Integer leftPageNumber = rightPageNumber - 9; //현재 페이지 기준 왼쪽 끝
 
-        map.put("lastPageNumber", lastPageNumber);
+
+        Integer nextPageNumber = rightPageNumber + 1; //다음 클릭 시
+        Integer prevPageNumber = leftPageNumber - 1; //이전 클릭 시
+
+        Boolean hasNextPage = nextPageNumber < lastPageNumber;
+        Boolean hasPrevPage = prevPageNumber > 1;
+
+        Map<String, Object> pageInfo = new HashMap<>();
+
+        rightPageNumber = Math.min(rightPageNumber, lastPageNumber);
+
+        pageInfo.put("lastPageNumber", lastPageNumber);
+        pageInfo.put("rightPageNumber", rightPageNumber);
+        pageInfo.put("leftPageNumber", leftPageNumber);
+        pageInfo.put("currentPageNumber", page);//현재 페이지
+        pageInfo.put("nextPageNumber", nextPageNumber);
+        pageInfo.put("prevPageNumber", prevPageNumber);
+        pageInfo.put("hasNextPage", hasNextPage);
+        pageInfo.put("hasPrevPage", hasPrevPage);
+
+        //오른쪽 끝페이지는 마지막 페이지보다 클 수 없다
+
+        map.put("pageInfo", pageInfo);
         map.put("boardList", list);
         return map;
     }

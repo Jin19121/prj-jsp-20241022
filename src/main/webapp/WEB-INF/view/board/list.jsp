@@ -2,6 +2,16 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
+    <style>
+        table {
+            margin: 5px;
+        }
+
+        .active {
+            padding: 3px;
+            background-color: lightskyblue;
+        }
+    </style>
     <title>list</title>
 </head>
 <body>
@@ -34,9 +44,20 @@
 
 <%--pagination--%>
 <div>
-    <c:forEach begin="1" end="${lastPageNumber}" var="pageNumber">
-        <a href="/board/list?page=${pageNumber}">${pageNumber}</a>
+    <%--    이전--%>
+    <c:if test="${pageInfo.hasPrevPage}">
+        <a href="/board/list?page=${pageInfo.prevPageNumber}">이전</a>
+    </c:if>
+    <c:forEach begin="${pageInfo.leftPageNumber}"
+               end="${pageInfo.rightPageNumber}"
+               var="pageNumber">
+        <a class="${pageInfo.currentPageNumber == pageNumber? 'active':''}"
+           href="/board/list?page=${pageNumber}">${pageNumber}</a>
     </c:forEach>
+    <%--    다음--%>
+    <c:if test="${pageInfo.hasNextPage}">
+        <a href="/board/list?page=${pageInfo.nextPageNumber}">다음</a>
+    </c:if>
 </div>
 </body>
 </html>
