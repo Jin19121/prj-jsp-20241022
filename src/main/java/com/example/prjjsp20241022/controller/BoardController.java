@@ -52,7 +52,6 @@ public class BoardController {
 
         //페이지 번호의 오른쪽 끝 값
         Integer endRight = ((page - 1) / 10 + 1) * 10;
-        model.addAttribute("endRight", endRight);
 
         //페이지 왼쪽
         Integer endLeft = endRight - 9;
@@ -68,11 +67,10 @@ public class BoardController {
 
         //마지막 페이지 연산
         Integer lastPage = service.count();
+        endRight = Math.min(endRight, lastPage);
+        model.addAttribute("endRight", endRight);
         model.addAttribute("lastPage", lastPage);
 
-        //마지막 페이지에서 끊기
-        Integer cutEnd = ((page - 1) / 10 - 1) * 10;
-        model.addAttribute("cutEnd", Math.min(cutEnd, lastPage));
     }
 
     //각 게시글
