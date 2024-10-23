@@ -27,18 +27,21 @@
     </nav>
     <div>
         <c:if test="${message.type=='written'}">
-            <div class="alert alert-primary written" role="alert">
+            <div class="alert alert-primary written alert-dismissible fade show" role="alert">
                 <h5>${message.text}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"/>
             </div>
         </c:if>
         <c:if test="${message.type=='edited'}">
-            <div class="alert alert-warning edited" role="alert">
+            <div class="alert alert-warning edited alert-dismissible fade show" role="alert">
                 <h5>${message.text}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"/>
             </div>
         </c:if>
         <c:if test="${message.type=='deleted'}">
-            <div class="alert alert-danger deleted" role="alert">
+            <div class="alert alert-danger deleted alert-dismissible fade show" role="alert">
                 <h5>${message.text}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"/>
             </div>
         </c:if>
     </div>
