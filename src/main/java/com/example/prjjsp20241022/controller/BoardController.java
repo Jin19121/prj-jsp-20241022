@@ -86,7 +86,7 @@ public class BoardController {
         service.remove(id);
 
         rttr.addFlashAttribute("message",
-                Map.of("type", "warning",
+                Map.of("type", "deleted",
                         "text", id + "번 게시물 삭제 완료"));
         return "redirect:/board/list";
     }

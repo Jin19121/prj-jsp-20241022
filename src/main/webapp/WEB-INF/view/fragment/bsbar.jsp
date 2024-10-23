@@ -26,8 +26,18 @@
         </div>
     </nav>
     <div>
-        <c:if test="${not empty message}">
-            <div class="${message.type}">
+        <c:if test="${message.type=='written'}">
+            <div class="alert alert-primary written" role="alert">
+                <h5>${message.text}</h5>
+            </div>
+        </c:if>
+        <c:if test="${message.type=='edited'}">
+            <div class="alert alert-warning edited" role="alert">
+                <h5>${message.text}</h5>
+            </div>
+        </c:if>
+        <c:if test="${message.type=='deleted'}">
+            <div class="alert alert-danger deleted" role="alert">
                 <h5>${message.text}</h5>
             </div>
         </c:if>
