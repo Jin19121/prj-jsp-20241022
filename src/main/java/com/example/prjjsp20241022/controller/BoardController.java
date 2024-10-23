@@ -44,7 +44,7 @@ public class BoardController {
         //한 페이지에 10개 게시물 표시
 
         Map<String, Object> result = service.list(page);
-        model.addAttribute(result);
+        model.addAllAttributes(result);
 //        model.addAttribute("boardList", service.list());
 
 
