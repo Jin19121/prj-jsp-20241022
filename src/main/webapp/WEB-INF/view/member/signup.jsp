@@ -14,34 +14,44 @@
 <body>
 <c:import url="/WEB-INF/view/fragment/newbar.jsp"></c:import>
 
+
+<%--div.container>div.row>div.col>h2.my-3+form--%>
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <h2 class="my-3">회원 가입</h2>
-            <form action="" method="post">
-                <%--        id, password, nickName, description--%>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-9 col-lg-6">
+            <h2 class="my-3">
+                회원 가입
+            </h2>
+            <form method="post">
+                <%-- id, password, nickName, description --%>
                 <div class="mb-3">
-                    <label for="inputId" class="form-label">ID</label>
-                    <input type="text" class="form-control" id="inputId">
+                    <label for="inputId1" class="form-label">
+                        아이디
+                    </label>
+                    <input id="inputId1" name="id" type="text" class="form-control">
                 </div>
-
                 <div class="mb-3">
-                    <label for="inputPass" class="form-label">Password</label>
-                    <input type="text" class="form-control" id="inputPass">
+                    <label for="inputPassword1" class="form-label">
+                        암호
+                    </label>
+                    <input id="inputPassword1" name="password" type="text" class="form-control">
                 </div>
-
                 <div class="mb-3">
-                    <label for="inputNick" class="form-label">Nickname</label>
-                    <input type="text" class="form-control" id="inputNick">
+                    <label for="inputNickName1" class="form-label">
+                        별명
+                    </label>
+                    <input id="inputNickName1" name="nickname" type="text" class="form-control">
                 </div>
-
                 <div class="mb-3">
-                    <label for="inputDescript" class="form-label">Description</label>
+                    <label for="textareaDescription1" class="form-label">
+                        자기소개
+                    </label>
                     <textarea type="text"
                               class="form-control"
-                              id="inputDescript"
+                              id="textareaDescription1"
                               rows="10"
-                              name="description"></textarea>
+                              name="description"
+                    ></textarea>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-primary">
