@@ -22,7 +22,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
-<c:import url="/WEB-INF/view/fragment/navbar.jsp"></c:import>
+<c:import url="/WEB-INF/view/fragment/newbar.jsp"></c:import>
 <h2>게시글 목록</h2>
 <table>
     <thead>
