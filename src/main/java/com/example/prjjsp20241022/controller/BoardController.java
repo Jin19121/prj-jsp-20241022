@@ -63,7 +63,7 @@ public class BoardController {
         service.remove(id);
 
         rttr.addFlashAttribute("message",
-                Map.of("type", "warning",
+                Map.of("type", "danger",
                         "text", id + "번 게시물 삭제 완료"));
         return "redirect:/board/list";
     }
@@ -80,7 +80,7 @@ public class BoardController {
         service.update(board);
 
         rttr.addFlashAttribute("message",
-                Map.of("type", "edited",
+                Map.of("type", "warning",
                         "text", board.getId() + "번 게시물 수정 완료"));
         rttr.addAttribute("id", board.getId());
         return "redirect:/board/view";
