@@ -44,8 +44,11 @@
                            value="<%= currentDateTime %>"
                            readonly>
                 </div>
-                <div>
-                    <button>수정</button>
+                <div class="mb-3">
+                    <button class="btn btn-outline-warning">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        수정 저장
+                    </button>
                 </div>
             </form>
         </div>

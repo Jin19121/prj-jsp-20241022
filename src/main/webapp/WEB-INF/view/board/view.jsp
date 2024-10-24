@@ -48,7 +48,7 @@
                 <i class="fa-solid fa-trash"></i>
                 삭제
             </button>
-            <a class="btn btn-outline-primary" href="/board/edit?id=${board.id}">
+            <a class="btn btn-outline-warning" href="/board/edit?id=${board.id}">
                 <i class="fa-solid fa-pen-to-square"></i>
                 수정
             </a>
