@@ -16,28 +16,41 @@
 <body>
 <c:import url="/WEB-INF/view/fragment/newbar.jsp"></c:import>
 
-<h2>${board.id}번 게시물 수정</h2>
-<form method="post">
-    <div>번호
-        <input type="number" name="id" value="${board.id}" readonly>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="my-3">${board.id}번 게시물 수정</h2>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="editNo" class="form-label">번호</label>
+                    <input id="editNo" class="form-control" type="number" name="id" value="${board.id}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="editTitle" class="form-label">제목</label>
+                    <input id="editTitle" class="form-control" type="text" value="${board.title}" name="title">
+                </div>
+                <div class="mb-3">
+                    <label for="editTextarea" class="form-label">본문</label>
+                    <textarea class="form-control" id="editTextarea" cols="30" rows="5" name="content">${board.content}
+                    </textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="editWriter" class="form-label">작성자</label>
+                    <input id="editWriter" class="form-control" type="text" name="writer" value="${board.writer}">
+                </div>
+                <div class="mb-3">
+                    <label for="editTime" class="form-label">수정 일시</label>
+                    <input id="editTime" class="form-control" type="datetime-local" name="inserted" id="dateTimeInput"
+                           value="<%= currentDateTime %>"
+                           readonly>
+                </div>
+                <div>
+                    <button>수정</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div>제목
-        <input type="text" value="${board.title}" name="title">
-    </div>
-    <div>본문
-        <textarea id="" cols="30" rows="10" name="content">${board.content}
-        </textarea>
-    </div>
-    <div>작성자
-        <input type="text" name="writer" value="${board.writer}">
-    </div>
-    <div>수정 일시
-        <input type="datetime-local" name="inserted" id="dateTimeInput" value="<%= currentDateTime %>" readonly>
-    </div>
-    <div>
-        <button>수정</button>
-    </div>
-</form>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
