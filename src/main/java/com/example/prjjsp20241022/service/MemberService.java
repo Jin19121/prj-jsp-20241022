@@ -25,4 +25,7 @@ public class MemberService {
     public Member info(String id) {
         return mapper.selectById(id);
     }
+
+    public void updateMember(Member member) {
+    }
 }

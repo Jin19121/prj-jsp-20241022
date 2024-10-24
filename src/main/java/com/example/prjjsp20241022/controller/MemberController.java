@@ -29,7 +29,8 @@ public class MemberController {
 
         rttr.addFlashAttribute("message",
                 Map.of("type", "success", "text", "회원 가입 완료"));
-        return "redirect:/member/list";
+        rttr.addAttribute("id", member.getId());
+        return "redirect:/member/view";
     }
 
     @GetMapping("list")
@@ -41,5 +42,23 @@ public class MemberController {
     public void info(String id, Model model) {
         Member member = service.info(id);
         model.addAttribute("member", member);
+    }
+
+
+    @GetMapping("edit")
+    public void edit(String id, Model model) {
+        Member member = service.info(id);
+        model.addAttribute("member", member);
+    }
+
+    @PostMapping("edit")
+    public String editMember(Member member, RedirectAttributes rttr) {
+        service.updateMember(member);
+
+        rttr.addFlashAttribute("message",
+                Map.of("type", "warning",
+                        "text", member.getId() + " 회원 정보 수정 완료"));
+        rttr.addAttribute("id", member.getId());
+        return "redirect:/member/view";
     }
 }

@@ -19,7 +19,7 @@ public interface MemberMapper {
 
     @Select("""
             SELECT * FROM member
-            ORDER BY id
+            ORDER BY inserted DESC
             """)
     List<Member> selectAll();
 
