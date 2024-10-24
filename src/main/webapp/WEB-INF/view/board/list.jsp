@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
-    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>board list</title>
@@ -24,10 +23,18 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th class="d-none d-lg-table-cell">작성 일시</th>
+                    <th>
+                        <i class="fa-solid fa-hashtag"></i>
+                    </th>
+                    <th class="w-50">제목</th>
+                    <th>
+                        <i class="fa-solid fa-user-pen"></i>
+                        작성자
+                    </th>
+                    <th class="d-none d-lg-table-cell">
+                        <i class="fa-regular fa-calendar"></i>
+                        작성 일시
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
