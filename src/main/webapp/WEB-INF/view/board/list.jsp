@@ -51,32 +51,46 @@
                 </c:forEach>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
 
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <c:if test="${currentPage>10}">
-                            <a href="/board/list?page=${prev}" class="page-link">prev</a>
-                        </c:if>
-                    </li>
-                    <c:forEach begin="${endLeft}" end="${endRight}" var="pageNumber">
-                        <li class="page-item">
-                            <a class="page-link" href="/board/list?page=${pageNumber}">${pageNumber}</a>
-                        </li>
-                    </c:forEach>
-                    <li class="page-item">
-                        <c:if test="${endLeft + 9 <= lastPage}">
-                            <a href="/board/list?page=${next}" class="page-link">next</a>
-                        </c:if>
-                    </li>
-                </ul>
-            </nav>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <c:if test="${currentPage>10}">
+                <a href="/board/list?page=1" class="page-link">first</a>
+            </c:if>
+        </li>
+        <li class="page-item">
+            <c:if test="${currentPage>10}">
+                <a href="/board/list?page=${prev}" class="page-link">prev</a>
+            </c:if>
+        </li>
+        <c:forEach begin="${endLeft}" end="${endRight}" var="pageNumber">
+            <li class="page-item">
+                <a class="page-link" href="/board/list?page=${pageNumber}">${pageNumber}</a>
+            </li>
+        </c:forEach>
+        <li class="page-item">
+            <c:if test="${endLeft + 9 <= lastPage}">
+                <a href="/board/list?page=${next}" class="page-link">next</a>
+            </c:if>
+        </li>
+        <li class="page-item">
+            <c:if test="${endLeft + 9 <= lastPage}">
+                <a href="/board/list?page=${lastPage}" class="page-link">last</a>
+            </c:if>
+        </li>
 
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-                    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-                    crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-                    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-                    crossorigin="anonymous"></script>
+    </ul>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 </body>
 </html>
