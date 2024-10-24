@@ -42,4 +42,21 @@ public class MemberController {
         Member member = service.info(id);
         model.addAttribute("member", member);
     }
+
+    @PostMapping("delete")
+    public String delete(String id, String password,
+                         RedirectAttributes rttr) {
+        if (service.removeMember(id, password)) {
+            //탈퇴 성공
+            rttr.addFlashAttribute("message", Map.of("type", "dark",
+                    "text", "탈퇴되었습니다."));
+            return "redirect:/member/signup";
+        } else {
+            //탈퇴 실패
+            rttr.addFlashAttribute("message", Map.of("type", "warning",
+                    "text", "아이디와 비밀번호가 일치하지 않습니다."));
+            rttr.addAttribute("id", id);
+            return "redirect:/member/view";
+        }
+    }
 }
