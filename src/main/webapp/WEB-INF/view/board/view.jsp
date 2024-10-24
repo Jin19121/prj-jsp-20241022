@@ -44,7 +44,7 @@
                 <input class="form-control" id="viewDate" type="datetime-local" value="${board.inserted}" readonly>
             </div>
 
-            <button form="deleteForm1" class="btn btn-outline-danger">
+            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal1">
                 <i class="fa-solid fa-trash"></i>
                 삭제
             </button>
@@ -60,6 +60,26 @@
         </div>
     </div>
 </div>
+
+<%--modal 안내창: 삭제--%>
+<div class="modal" id="deleteConfirmModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">삭제 확인</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>${board.id}번 게시물을 삭제하시겠습니다?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                <button form="deleteForm1" type="submit" class="btn btn-danger">삭제</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
