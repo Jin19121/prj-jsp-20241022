@@ -10,7 +10,9 @@
       integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
       crossorigin="anonymous" referrerpolicy="no-referrer"/>
 <body>
-<c:import url="/WEB-INF/view/fragment/newbar.jsp"></c:import>
+<c:import url="/WEB-INF/view/fragment/newbar.jsp">
+    <c:param name="active" value="new"/>
+</c:import>
 
 <h2>새 게시물 작성</h2>
 <form method="post">

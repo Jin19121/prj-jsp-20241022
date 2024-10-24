@@ -2,15 +2,6 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
-    <style>
-        table {
-            margin: 5px;
-        }
-
-        .active {
-            padding: 3px;
-            background-color: lightskyblue;
-        }
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +13,10 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
-<c:import url="/WEB-INF/view/fragment/newbar.jsp"></c:import>
+<c:import url="/WEB-INF/view/fragment/newbar.jsp">
+    <c:param name="${active}" value="list"/>
+</c:import>
+
 <h2>게시글 목록</h2>
 <table>
     <thead>

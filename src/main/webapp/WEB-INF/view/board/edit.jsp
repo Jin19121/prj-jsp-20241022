@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%
+    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+    String currentDateTime = sdf.format(new java.util.Date());
+%>
 <html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +32,7 @@
         <input type="text" name="writer" value="${board.writer}">
     </div>
     <div>수정 일시
-        <input type="datetime-local" name="inserted" id="currentDatetime">
+        <input type="datetime-local" name="inserted" id="dateTimeInput" value="<%= currentDateTime %>" readonly>
     </div>
     <div>
         <button>수정</button>
