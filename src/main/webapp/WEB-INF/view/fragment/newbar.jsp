@@ -4,7 +4,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
             <a class="navbar-brand" href="/board/list">
-                <i class="fa-solid fa-house">JSP 게시판</i>
+                <i class="fa-solid fa-house"> JSP 게시판</i>
 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
