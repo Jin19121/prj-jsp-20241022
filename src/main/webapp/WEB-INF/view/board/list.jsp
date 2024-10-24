@@ -36,52 +36,25 @@
     </tbody>
 </table>
 
-<div style="margin: 10px">
-    <%--이전--%>
-    <c:if test="${currentPage>10}">
-        <c:url value="/board/list" var="pageLink">
-            <c:param name="page" value="${prev}"/>
-        </c:url>
-        <a href="${pageLink}">&lt; 이전</a>
-    </c:if>
-    <%--페이지 리스트--%>
-    <c:forEach begin="${endLeft}" end="${endRight}" var="pageNumber">
-        <c:url value="/board/list" var="pageLink">
-            <c:param name="page" value="${pageNumber}"/>
-        </c:url>
-        <span class="${currentPage == pageNumber ? 'active' : ''}">
-            <a href="${pageLink}">${pageNumber}</a>
-        </span>
-    </c:forEach>
-    <%--다음--%>
-    <c:if test="${endLeft + 9 <= lastPage}">
-        <c:url value="/board/list" var="pageLink">
-            <c:param name="page" value="${next}"/>
-        </c:url>
-        <a href="${pageLink}">다음 &gt;</a>
-    </c:if>
-</div>
-
-
 <nav aria-label="Page navigation example">
     <ul class="pagination">
-        <c:forEach begin="${endLeft}" end="endRight" var="pageNumber">
+        <li class="page-item">
+            <c:if test="${currentPage>10}">
+                <a href="/board/list?page=${prev}" class="page-link">prev</a>
+            </c:if>
+        </li>
+        <c:forEach begin="${endLeft}" end="${endRight}" var="pageNumber">
             <li class="page-item">
-                <a class="page-link" href="/board/list">${pageNumber}</a>
+                <a class="page-link" href="/board/list?page=${pageNumber}">${pageNumber}</a>
             </li>
         </c:forEach>
+        <li class="page-item">
+            <c:if test="${endLeft + 9 <= lastPage}">
+                <a href="/board/list?page=${next}" class="page-link">next</a>
+            </c:if>
+        </li>
     </ul>
 </nav>
-
-<%--&lt;%&ndash;페이지 리스트&ndash;%&gt;--%>
-<%--<c:forEach begin="${endLeft}" end="${endRight}" var="pageNumber">--%>
-<%--    <c:url value="/board/list" var="pageLink">--%>
-<%--        <c:param name="page" value="${pageNumber}"/>--%>
-<%--    </c:url>--%>
-<%--    <span class="${currentPage == pageNumber ? 'active' : ''}">--%>
-<%--            <a href="${pageLink}">${pageNumber}</a>--%>
-<%--    </span>--%>
-<%--</c:forEach>--%>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
