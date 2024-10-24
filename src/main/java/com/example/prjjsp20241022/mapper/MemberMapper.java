@@ -19,12 +19,13 @@ public interface MemberMapper {
 
     @Select("""
             SELECT * FROM member
-            ORDER BY id""")
+            ORDER BY id
+            """)
     List<Member> selectAll();
 
     @Select("""
             SELECT * FROM member
-            WHERE id = #{id}""")
+            WHERE id = #{id}
+            """)
     Member selectById(String id);
-
 }

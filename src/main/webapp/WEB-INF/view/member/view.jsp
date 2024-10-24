@@ -37,7 +37,8 @@
                 <label for="inputNickName1" class="form-label">
                     별명
                 </label>
-                <input value="nickname" readonly id="inputNickName1" name="nickname" type="text" class="form-control">
+                <input value="${member.nickname}" readonly id="inputNickName1" name="nickname" type="text"
+                       class="form-control">
             </div>
             <div class="mb-3">
                 <label for="textareaDescription1" class="form-label">
@@ -50,7 +51,7 @@
                           name="description">${member.description}</textarea>
             </div>
             <div class="mb-3">
-                <label for="inputInserted1" class="form-labe">
+                <label for="inputInserted1" class="form-label">
                     가입 일시
                 </label>
                 <input class="form-control" value="${member.inserted}" readonly type="datetime-local"
@@ -61,7 +62,7 @@
                 <i class="fa-solid fa-trash-can"></i>
                 삭제
             </button>
-            <a class="btn btn-outline-primary" href="/member/edit?id=${board.id}">
+            <a class="btn btn-outline-primary" href="/member/edit?id=${member.id}">
                 <i class="fa-solid fa-pen-to-square"></i>
                 수정
             </a>
