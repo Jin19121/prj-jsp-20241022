@@ -11,7 +11,7 @@
 <body>
 <c:import url="/WEB-INF/view/fragment/bsbar.jsp"></c:import>
 <h2>게시글 목록</h2>
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
         <th>번호</th>
@@ -61,6 +61,28 @@
         <a href="${pageLink}">다음 &gt;</a>
     </c:if>
 </div>
+
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <c:forEach begin="${endLeft}" end="endRight" var="pageNumber">
+            <li class="page-item">
+                <a class="page-link" href="/board/list">${pageNumber}</a>
+            </li>
+        </c:forEach>
+    </ul>
+</nav>
+
+<%--&lt;%&ndash;페이지 리스트&ndash;%&gt;--%>
+<%--<c:forEach begin="${endLeft}" end="${endRight}" var="pageNumber">--%>
+<%--    <c:url value="/board/list" var="pageLink">--%>
+<%--        <c:param name="page" value="${pageNumber}"/>--%>
+<%--    </c:url>--%>
+<%--    <span class="${currentPage == pageNumber ? 'active' : ''}">--%>
+<%--            <a href="${pageLink}">${pageNumber}</a>--%>
+<%--    </span>--%>
+<%--</c:forEach>--%>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
