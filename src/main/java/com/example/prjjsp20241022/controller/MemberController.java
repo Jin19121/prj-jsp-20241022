@@ -4,6 +4,7 @@ import com.example.prjjsp20241022.dto.Member;
 import com.example.prjjsp20241022.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +27,19 @@ public class MemberController {
         System.out.println("member = " + member);
         service.addMember(member);
 
-        rttr.addFlashAttribute("message", Map.of("type", "success", "text", "회원 가입 완료"));
-        return "redirect:/board/list";
+        rttr.addFlashAttribute("message",
+                Map.of("type", "success", "text", "회원 가입 완료"));
+        return "redirect:/member/list";
+    }
 
+    @GetMapping("list")
+    public void list(Model model) {
+        model.addAttribute("memberList", service.list());
+    }
+
+    @GetMapping("view")
+    public void info(String id, Model model) {
+        Member member = service.info(id);
+        model.addAttribute("member", member);
     }
 }

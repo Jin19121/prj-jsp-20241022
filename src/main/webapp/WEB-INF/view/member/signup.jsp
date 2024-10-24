@@ -15,7 +15,6 @@
 <c:import url="/WEB-INF/view/fragment/newbar.jsp"></c:import>
 
 
-<%--div.container>div.row>div.col>h2.my-3+form--%>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-md-9 col-lg-6">

@@ -17,21 +17,28 @@
                     <li class="nav-item">
                         <a class="nav-link ${param.active == 'list' ? 'active' : ''}" href="/board/list">
                             <i class="fa-solid fa-list"></i>
-                            목록
+                            게시글 목록
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ${param.active == 'new' ? 'active' : ''}" href="/board/new">
                             <i class="fa-solid fa-file-pen"></i>
-                            작성
+                            새 글 작성
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/member/signup" class="nav-link">
                             <i class="fa-solid fa-user-plus"></i>
-                            회원가입
+                            회원 가입
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/member/list" class="nav-link">
+                            <i class="fa-regular fa-address-book"></i>
+                            회원 목록
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>
