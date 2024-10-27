@@ -64,6 +64,11 @@
                         </a>
                     </li>
                     </c:if>
+
+                    <li>
+<%--                        TODO: 지우거나 수정 필요--%>
+                        로그인: ${sessionScope.loggedInMember.id}
+                    </li>
                 </ul>
             </div>
         </div>

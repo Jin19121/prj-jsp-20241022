@@ -72,13 +72,21 @@ public class BoardController {
 
     //삭제
     @PostMapping("delete")
-    public String deleteBoard(Integer id, RedirectAttributes rttr) {
-        service.remove(id);
+    public String deleteBoard(Integer id, RedirectAttributes rttr,
+                              @SessionAttribute("loggedInMember") Member member) {
+        try {
+            service.remove(id, member);
 
-        rttr.addFlashAttribute("message",
-                Map.of("type", "danger",
-                        "text", id + "번 게시물 삭제 완료"));
-        return "redirect:/board/list";
+            rttr.addFlashAttribute("message",
+                    Map.of("type", "warning",
+                            "text", id + "번 게시물 삭제 완료"));
+            return "redirect:/board/list";
+        } catch (RuntimeException e) {
+            rttr.addFlashAttribute("message", Map.of("type", "danger",
+                        "text", id + "번 게시물 삭제 권한이 없습니다."));
+            rttr.addAttribute("id", id);
+            return "redirect:/board/view";
+        }
     }
 
     //수정
