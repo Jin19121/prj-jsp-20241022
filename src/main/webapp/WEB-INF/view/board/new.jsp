@@ -27,11 +27,11 @@
                     <label for="textareaContent1" class="form-label">본문</label>
                     <textarea name="content" id="textareaContent1" class="form-control" cols="30" rows="10"></textarea>
                 </div>
-                <div class="mb-3">
-                    <label for="inputWriter1" class="form-label">작성자</label>
-                    <input type="text" class="form-control" id="inputWriter1" name="writer">
+<%--                <div class="mb-3"> 로그인 아이디로 자동 완성--%>
+<%--                    <label for="inputWriter1" class="form-label">작성자</label>--%>
+<%--                    <input type="text" class="form-control" id="inputWriter1" name="writer">--%>
 
-                </div>
+<%--                </div>--%>
                 <div class="mb-3">
                     <button class="btn btn-primary">
                         <i class="fa-regular fa-floppy-disk"></i>
