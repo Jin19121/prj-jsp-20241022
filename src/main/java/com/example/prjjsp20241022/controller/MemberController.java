@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Map;
 
 @Controller
@@ -37,10 +36,13 @@ public class MemberController {
     }
 
     @GetMapping("list")
-    public String list(@SessionAttribute(value="loggedInMember", required = false)
-                         Member member, Model model, RedirectAttributes rttr) {
+    public String list(
+            @SessionAttribute(value = "loggedInMember", required = false)
+            Member member,
+            Model model,
+            RedirectAttributes rttr) {
 //        model.addAttribute("memberList", service.list());
-        if(member == null) {
+        if (member == null) {
             rttr.addFlashAttribute("message", Map.of("type", "warning",
                     "text", "회원만 회원 목록을 볼 수 있습니다."));
             return "redirect:/member/login";
@@ -87,7 +89,7 @@ public class MemberController {
         } catch (DuplicateKeyException e) {
             System.out.println("중복 닉네임");
             rttr.addFlashAttribute("message", Map.of("type", "warning",
-                    "text", STR. "\{member.getNickname()}은 사용할 수 없는 닉네임입니다."));
+                    "text", STR."\{member.getNickname()}은 사용할 수 없는 닉네임입니다."));
 
             rttr.addAttribute("id", member.getId());
             return "redirect:/member/edit";
@@ -137,7 +139,7 @@ public class MemberController {
         } else {
             // 로그인 성공
             rttr.addFlashAttribute("message", Map.of("type", "success",
-                     "text", "로그인 되었습니다."));
+                    "text", "로그인 되었습니다."));
             session.setAttribute("loggedInMember", member);
             return "redirect:/board/list";
         }
