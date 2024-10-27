@@ -34,10 +34,10 @@
                     <textarea class="form-control" id="editTextarea" cols="30" rows="5" name="content">${board.content}
                     </textarea>
                 </div>
-                <div class="mb-3">
-                    <label for="editWriter" class="form-label">작성자</label>
-                    <input id="editWriter" class="form-control" type="text" name="writer" value="${board.writer}">
-                </div>
+<%--                <div class="mb-3">--%>
+<%--                    <label for="editWriter" class="form-label">작성자</label>--%>
+<%--                    <input id="editWriter" class="form-control" type="text" name="writer" value="${board.writer}">--%>
+<%--                </div>--%>
                 <div class="mb-3">
                     <label for="editTime" class="form-label">수정 일시</label>
                     <input id="editTime" class="form-control" type="datetime-local" name="inserted" id="dateTimeInput"
