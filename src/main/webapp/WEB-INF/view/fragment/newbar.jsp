@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<div>
+<%--login 여부--%>
+<c:set value="${not empty sessionScope.loggedInMember}" var="loggedIn"/>
+<div class="mb-4">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
             <a class="navbar-brand" href="/board/list">
@@ -20,30 +22,47 @@
                             게시글 목록
                         </a>
                     </li>
+                    <c:if test="${loggedIn}">
                     <li class="nav-item">
                         <a class="nav-link ${param.active == 'new' ? 'active' : ''}" href="/board/new">
                             <i class="fa-solid fa-file-pen"></i>
                             새 글 작성
                         </a>
                     </li>
+                    </c:if>
+                    <c:if test="${not loggedIn}">
                     <li class="nav-item">
                         <a href="/member/signup" class="nav-link">
                             <i class="fa-solid fa-user-plus"></i>
                             회원 가입
                         </a>
                     </li>
+                    </c:if>
+                    <c:if test="${loggedIn}"></c:if>
                     <li class="nav-item">
                         <a href="/member/list" class="nav-link">
                             <i class="fa-regular fa-address-book"></i>
                             회원 목록
                         </a>
                     </li>
+
+                    <c:if test="${not loggedIn}">
                     <li class="nav-item">
                         <a href="/member/login" class="nav-link">
                             <i class="fa-solid fa-arrow-right-to-bracket"></i>
                             로그인
                         </a>
                     </li>
+                    </c:if>
+
+                    <c:if test="${loggedIn}">
+                    <li class="nav-item">
+                        <a href="/member/login" class="nav-link">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            로그아웃
+                        </a>
+                    </li>
+                    </c:if>
                 </ul>
             </div>
         </div>
