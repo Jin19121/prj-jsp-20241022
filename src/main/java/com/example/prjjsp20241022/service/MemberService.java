@@ -30,4 +30,8 @@ public class MemberService {
         int count = mapper.deleteByIdAndPsd(id, password);
         return count == 1;
     }
+
+    public void update(Member member) {
+        mapper.update(member);
+    }
 }
