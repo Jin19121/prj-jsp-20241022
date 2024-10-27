@@ -47,7 +47,7 @@ public class MemberController {
                     "text", "회원만 회원 목록을 볼 수 있습니다."));
             return "redirect:/member/login";
         } else {
-            model.addAttribute("member", service.list());
+            model.addAttribute("memberList", service.list());
             return null;
         }
     }
