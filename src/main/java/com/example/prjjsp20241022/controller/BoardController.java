@@ -97,12 +97,19 @@ public class BoardController {
     }
 
     @PostMapping("edit")
-    public String editBoard(Board board, RedirectAttributes rttr) {
-        service.update(board);
+    public String editBoard(Board board, RedirectAttributes rttr,
+                            @SessionAttribute("loggedInMember") Member member) {
+        try {
+            service.update(board, member);
 
-        rttr.addFlashAttribute("message",
-                Map.of("type", "warning",
-                        "text", board.getId() + "번 게시물 수정 완료"));
+            rttr.addFlashAttribute("message",
+                    Map.of("type", "warning",
+                            "text", board.getId() + "번 게시물 수정 완료"));
+        } catch (RuntimeException e) {
+            rttr.addFlashAttribute("message",
+                    Map.of("type", "danger",
+                            "text", board.getId() + "번 게시물 수정 수정 권한 없음"));
+        }
         rttr.addAttribute("id", board.getId());
         return "redirect:/board/view";
     }

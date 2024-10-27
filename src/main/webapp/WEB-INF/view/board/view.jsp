@@ -14,6 +14,9 @@
 <body>
 <c:import url="/WEB-INF/view/fragment/newbar.jsp"></c:import>
 
+<%-- 수정/삭제 권한 --%>
+<c:set value="${sessionScope.loggedInMember.id == board.writer}" var="hasAccess"/>
+
 <%--그리드 시스템 활용--%>
 <div class="container">
     <div class="row">
@@ -44,23 +47,29 @@
                 <input class="form-control" id="viewDate" type="datetime-local" value="${board.inserted}" readonly>
             </div>
 
-            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal1">
-                <i class="fa-solid fa-trash"></i>
-                삭제
-            </button>
+            <c:if test="${hasAccess}">
+                <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal1">
+                    <i class="fa-solid fa-trash"></i>
+                    삭제
+                </button>
+            </c:if>
+
             <a class="btn btn-outline-warning" href="/board/edit?id=${board.id}">
                 <i class="fa-solid fa-pen-to-square"></i>
                 수정
             </a>
 
+            <c:if test="${hasAccess}">
             <form action="/board/delete" class="d-none" id="deleteForm1" method="post">
                 <input type="hidden" name="id" value="${board.id}">
             </form>
+            </c:if>
 
         </div>
     </div>
 </div>
 
+<c:if test="${hasAccess}">
 <%--modal 안내창: 삭제--%>
 <div class="modal" id="deleteConfirmModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -79,7 +88,7 @@
         </div>
     </div>
 </div>
-
+</c:if>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
