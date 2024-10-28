@@ -40,3 +40,6 @@ UPDATE board
 SET writer = (SELECT id FROM member LIMIT 1)
 WHERE id > 0;
 
+#board.writer -> member.id 참조 (외래키) 추가
+ALTER TABLE board
+    ADD FOREIGN KEY (writer) REFERENCES member (id);

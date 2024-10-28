@@ -64,7 +64,7 @@ public class MemberController {
                          RedirectAttributes rttr,
                          @SessionAttribute("loggedInMember") Member member) {
         if (service.hasAccess(id, member)) {
-            if (service.removeMember(id, password)) {
+            if (service.remove(id, password)) {
                 //탈퇴 성공
                 rttr.addFlashAttribute("message", Map.of("type", "dark",
                         "text", "탈퇴되었습니다."));
