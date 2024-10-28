@@ -86,8 +86,16 @@ public class MemberController {
 
 
     @GetMapping("edit")
-    public void edit(String id, Model model) {
-        model.addAttribute("member", service.info(id));
+    public String edit(String id, Model model, RedirectAttributes rttr,
+                       @SessionAttribute("loggedInMember") Member member) {
+        if (service.hasAccess(id, member)) {
+            model.addAttribute("member", service.info(id));
+            return null;
+        } else {
+            rttr.addFlashAttribute("message", Map.of("type", "danger",
+                    "text", "권한이 없습니다."));
+            return "redirect:/member/login";
+        }
     }
 
     @PostMapping("edit")
