@@ -21,11 +21,11 @@ public class BoardService {
         mapper.insert(board, member);
     }
 
-    public Map<String, Object> list(Integer page) {
+    public Map<String, Object> list(Integer page, String searchTarget, String keyword) {
         //한 페이지에 10개
         Integer offset = (page - 1) * 10;
 //        List<Board> list = mapper.selectAll();
-        List<Board> list = mapper.selectAllPaging(offset);
+        List<Board> list = mapper.selectAllPaging(offset, searchTarget, keyword);
 
         //Controller에게 넘겨 줄 정보들
         Map<String, Object> map = new HashMap<>();
@@ -78,7 +78,7 @@ public class BoardService {
 
     public void update(Board board, Member member) {
         Board board1 = mapper.selectById(board.getId());
-        if(board1.getWriter().equals(member.getId())) {
+        if (board1.getWriter().equals(member.getId())) {
             mapper.update(board);
         } else {
             throw new RuntimeException("수정 권한 없음");

@@ -3,7 +3,6 @@ package com.example.prjjsp20241022.controller;
 import com.example.prjjsp20241022.dto.Board;
 import com.example.prjjsp20241022.dto.Member;
 import com.example.prjjsp20241022.service.BoardService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,10 +52,12 @@ public class BoardController {
     //게시글 list + page 나눔
     @GetMapping("list")
     public void listBoard(@RequestParam(name = "page", defaultValue = "1") Integer page,
+                          @RequestParam(required = false) String searchTarget,
+                          @RequestParam(defaultValue = "") String keyword,
                           Model model) {
         //한 페이지에 10개 게시물 표시
 
-        Map<String, Object> result = service.list(page);
+        Map<String, Object> result = service.list(page, searchTarget, keyword);
         model.addAllAttributes(result);
 //        model.addAttribute("boardList", service.list());
 
@@ -83,7 +84,7 @@ public class BoardController {
             return "redirect:/board/list";
         } catch (RuntimeException e) {
             rttr.addFlashAttribute("message", Map.of("type", "danger",
-                        "text", id + "번 게시물 삭제 권한이 없습니다."));
+                    "text", id + "번 게시물 삭제 권한이 없습니다."));
             rttr.addAttribute("id", id);
             return "redirect:/board/view";
         }
