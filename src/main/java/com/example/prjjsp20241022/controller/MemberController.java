@@ -32,7 +32,7 @@ public class MemberController {
 
         rttr.addFlashAttribute("message",
                 Map.of("type", "success", "text", "회원 가입 완료"));
-        return "redirect:/board/list";
+        return "redirect:/member/login";
     }
 
     @GetMapping("list")

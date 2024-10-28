@@ -51,8 +51,9 @@ public interface BoardMapper {
 
     @Select("""
             <script>
-                SELECT *
-                FROM board
+                SELECT b.id, b.title, b.inserted, m.nickname writerNickname
+                FROM board b JOIN member m 
+                    ON b.writer = m.id
                 <trim prefix="WHERE" prefixOverrides="OR">
                     <if test="searchTarget == 'all' or searchTarget == 'title'">
                         title LIKE CONCAT('%', #{keyword}, '%')
@@ -61,7 +62,7 @@ public interface BoardMapper {
                         OR content LIKE CONCAT('%', #{keyword}, '%')
                     </if>
                     <if test="searchTarget == 'all' or searchTarget == 'writer'">
-                        OR writer LIKE CONCAT('%', #{keyword}, '%')
+                        OR m.nickname LIKE CONCAT('%', #{keyword}, '%')
                     </if>
                 </trim>
                 ORDER BY id DESC
@@ -72,7 +73,9 @@ public interface BoardMapper {
 
     @Select("""
             <script>
-            SELECT COUNT(*) FROM board
+            SELECT COUNT(b.id)
+            FROM board b JOIN member m 
+                    ON b.writer = m.id
                 <trim prefix="WHERE" prefixOverrides="OR">
                     <if test="searchTarget == 'all' or searchTarget == 'title'">
                         title LIKE CONCAT('%', #{keyword}, '%')
@@ -81,7 +84,7 @@ public interface BoardMapper {
                         OR content LIKE CONCAT('%', #{keyword}, '%')
                     </if>
                     <if test="searchTarget == 'all' or searchTarget == 'writer'">
-                        OR writer LIKE CONCAT('%', #{keyword}, '%')
+                        OR m.nickname LIKE CONCAT('%', #{keyword}, '%')
                     </if>
                 </trim>
             </script>
