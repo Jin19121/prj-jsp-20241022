@@ -60,20 +60,30 @@ public class MemberController {
 
     @PostMapping("delete")
     public String delete(String id, String password,
-                         RedirectAttributes rttr) {
-        if (service.removeMember(id, password)) {
-            //탈퇴 성공
-            rttr.addFlashAttribute("message", Map.of("type", "dark",
-                    "text", "탈퇴되었습니다."));
-            return "redirect:/member/signup";
+                         HttpSession session,
+                         RedirectAttributes rttr,
+                         @SessionAttribute("loggedInMember") Member member) {
+        if (service.hasAccess(id, member)) {
+            if (service.removeMember(id, password)) {
+                //탈퇴 성공
+                rttr.addFlashAttribute("message", Map.of("type", "dark",
+                        "text", "탈퇴되었습니다."));
+                return "redirect:/member/signup";
+            } else {
+                //탈퇴 실패
+                rttr.addFlashAttribute("message", Map.of("type", "warning",
+                        "text", "아이디 혹은 비밀번호가 일치하지 않습니다."));
+                rttr.addAttribute("id", id);
+                return "redirect:/member/view";
+            }
         } else {
-            //탈퇴 실패
-            rttr.addFlashAttribute("message", Map.of("type", "warning",
-                    "text", "아이디와 비밀번호가 일치하지 않습니다."));
-            rttr.addAttribute("id", id);
-            return "redirect:/member/view";
+            rttr.addFlashAttribute("message", Map.of("type", "danger",
+                    "text", "권한이 없습니다."));
+            session.invalidate();
+            return "redirect:/member/login";
         }
     }
+
 
     @GetMapping("edit")
     public void edit(String id, Model model) {
