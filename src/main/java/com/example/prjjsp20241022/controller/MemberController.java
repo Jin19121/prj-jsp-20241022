@@ -158,8 +158,10 @@ public class MemberController {
     @RequestMapping("logout")
     public String logout(HttpSession session, RedirectAttributes rttr) {
         session.invalidate();
+
         rttr.addFlashAttribute("message", Map.of("type", "success",
                 "text", "로그아웃 되었습니다."));
+
         return "redirect:/member/login";
     }
 }
