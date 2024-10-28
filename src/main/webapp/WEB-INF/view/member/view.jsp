@@ -14,6 +14,9 @@
 <body>
 <c:import url="/WEB-INF/view/fragment/newbar.jsp"/>
 
+<%-- 수정/삭제 권한 --%>
+<c:set value="${sessionScope.loggedInMember.id == member.id}" var="hasAccess"/>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-md-9 col-lg-6">
@@ -31,8 +34,8 @@
                     암호
                 </label>
                 <div class="input-group">
-                <input value="${member.password}" readonly id="inputPassword1" name="password" type="text"
-                       class="form-control">
+                    <input value="${member.password}" readonly id="inputPassword1" name="password" type="text"
+                           class="form-control">
                     <a href="/member/edit-password?id=${member.id}" class="btn btn-outline-secondary">
                         변경
                     </a>

@@ -99,21 +99,30 @@ public class MemberController {
     }
 
     @PostMapping("edit")
-    public String editProcess(Member member, RedirectAttributes rttr) {
-        try {
-            service.update(member);
-            rttr.addFlashAttribute("message", Map.of("type", "success",
-                    "text", "회원 정보 변경 완료"));
-        } catch (DuplicateKeyException e) {
-            System.out.println("중복 닉네임");
-            rttr.addFlashAttribute("message", Map.of("type", "warning",
-                    "text", STR."\{member.getNickname()}은 사용할 수 없는 닉네임입니다."));
+    public String editProcess(Member member, RedirectAttributes rttr,
+                              @SessionAttribute("loggedInMember") Member loggedInMember) {
+        if (service.hasAccess(member.getId(), loggedInMember)) {
+            try {
+                service.update(member);
+                rttr.addFlashAttribute("message", Map.of("type", "success",
+                        "text", "회원정보가 수정 완료"));
+
+            } catch (DuplicateKeyException e) {
+                rttr.addFlashAttribute("message", Map.of("type", "danger",
+                        "text", STR."\{member.getNickname()}은 이미 사용중인 별명입니다."));
+
+                rttr.addAttribute("id", member.getId());
+                return "redirect:/member/edit";
+            }
 
             rttr.addAttribute("id", member.getId());
-            return "redirect:/member/edit";
+            return "redirect:/member/view";
+        } else {
+
+            rttr.addFlashAttribute("message", Map.of("type", "danger",
+                    "text", "권한이 없습니다."));
+            return "redirect:/member/login";
         }
-        rttr.addAttribute("id", member.getId());
-        return "redirect:/member/view";
     }
 
     @GetMapping("edit-password")
