@@ -2,6 +2,10 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%--login 여부--%>
 <c:set value="${not empty sessionScope.loggedInMember}" var="loggedIn"/>
+
+<%-- admin 여부--%>
+<c:set value="${sessionScope.loggedInMember.auth.contains('admin')}" var="isAdmin"/>
+
 <div class="mb-4">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
@@ -42,7 +46,7 @@
                         <li class="nav-item">
                             <a href="/member/list" class="nav-link">
                                 <i class="fa-regular fa-address-book"></i>
-                                회원 목록
+                                회원목록
                             </a>
                         </li>
                     </c:if>

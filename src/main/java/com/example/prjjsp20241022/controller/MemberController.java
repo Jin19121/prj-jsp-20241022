@@ -42,7 +42,7 @@ public class MemberController {
             Model model,
             RedirectAttributes rttr) {
 //        model.addAttribute("memberList", service.list());
-        if (member == null && member.getAuth().contains("admin")) {
+        if (member != null && member.getAuth().contains("admin")) {
             model.addAttribute("memberList", service.list());
             return null;
         } else {

@@ -46,8 +46,10 @@ public class MemberService {
             return null;
         } else {
             List<String> authList = mapper.selectAuthById(id);
+            member.setAuth(authList);
+
+            return member;
         }
-        return member;
     }
 
     public boolean hasAccess(String id, Member member) {
