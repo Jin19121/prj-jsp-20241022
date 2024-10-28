@@ -58,7 +58,7 @@
 
                     <c:if test="${loggedIn}">
                         <li class="nav-item">
-                            <a href="/member/login" class="nav-link">
+                            <a href="/member/logout" class="nav-link">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                 로그아웃
                             </a>
@@ -80,11 +80,12 @@
 </div>
 
 <c:if test="${not empty message}">
-    <div class="container">
-        <div class="row">
-            <div class="col col-md-8">
-                <div class=" alert alert-${message.type} alert-dismissible fade show">${message.text}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"/>
+    <div class="container mb-4">
+        <div class="row justify-content-center">
+            <div class="col col-md-8 col-xl-6">
+                <div class="alert alert-${message.type} alert-dismissible fade show">
+                        ${message.text}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>
         </div>
