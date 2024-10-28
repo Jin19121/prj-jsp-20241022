@@ -38,7 +38,7 @@
                             </a>
                         </li>
                     </c:if>
-                    <c:if test="${loggedIn}">
+                    <c:if test="${loggedIn && isAdmin}">
                         <li class="nav-item">
                             <a href="/member/list" class="nav-link">
                                 <i class="fa-regular fa-address-book"></i>

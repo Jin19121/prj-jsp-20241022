@@ -32,7 +32,7 @@ public class MemberController {
 
         rttr.addFlashAttribute("message",
                 Map.of("type", "success", "text", "회원 가입 완료"));
-        return "redirect:/member/list";
+        return "redirect:/board/list";
     }
 
     @GetMapping("list")
@@ -42,13 +42,13 @@ public class MemberController {
             Model model,
             RedirectAttributes rttr) {
 //        model.addAttribute("memberList", service.list());
-        if (member == null) {
-            rttr.addFlashAttribute("message", Map.of("type", "warning",
-                    "text", "회원만 회원 목록을 볼 수 있습니다."));
-            return "redirect:/member/login";
-        } else {
+        if (member == null && member.getAuth().contains("admin")) {
             model.addAttribute("memberList", service.list());
             return null;
+        } else {
+            rttr.addFlashAttribute("message", Map.of("type", "warning",
+                    "text", "관리자만 회원 목록을 볼 수 있습니다."));
+            return "redirect:/member/login";
         }
     }
 
