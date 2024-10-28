@@ -38,7 +38,7 @@
                 <label for="viewWriter" class="form-label">
                     작성자
                 </label>
-                <input class="form-control" id="viewWriter" type="text" value="${board.writer}" readonly>
+                <input class="form-control" id="viewWriter" type="text" value="${board.writerNickname}" readonly>
             </div>
             <div class="mb-3">
                 <label for="viewDate" class="form-label">
@@ -60,9 +60,9 @@
             </a>
 
             <c:if test="${hasAccess}">
-            <form action="/board/delete" class="d-none" id="deleteForm1" method="post">
-                <input type="hidden" name="id" value="${board.id}">
-            </form>
+                <form action="/board/delete" class="d-none" id="deleteForm1" method="post">
+                    <input type="hidden" name="id" value="${board.id}">
+                </form>
             </c:if>
 
         </div>
@@ -70,24 +70,24 @@
 </div>
 
 <c:if test="${hasAccess}">
-<%--modal 안내창: 삭제--%>
-<div class="modal" id="deleteConfirmModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">삭제 확인</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>${board.id}번 게시물을 삭제하시겠습니다?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                <button form="deleteForm1" type="submit" class="btn btn-danger">삭제</button>
+    <%--modal 안내창: 삭제--%>
+    <div class="modal" id="deleteConfirmModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">삭제 확인</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>${board.id}번 게시물을 삭제하시겠습니다?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button form="deleteForm1" type="submit" class="btn btn-danger">삭제</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </c:if>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
